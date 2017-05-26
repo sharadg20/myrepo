@@ -1,0 +1,72 @@
+sharad@DND-INAUBUNTUSHA:~$ sudo docker image
+image   images  
+sharad@DND-INAUBUNTUSHA:~$ sudo docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+jenkins                  latest              681ef98a247f        7 days ago          704 MB
+chef/chef                latest              22e4583aa891        5 weeks ago         104 MB
+hello-world              latest              48b5124b2768        4 months ago        1.84 kB
+int200/hello-world       latest              48b5124b2768        4 months ago        1.84 kB
+jmreeve007/hello-world   latest              48b5124b2768        4 months ago        1.84 kB
+sharad@DND-INAUBUNTUSHA:~$ sudo docker push int200/hello-world
+The push refers to a repository [docker.io/int200/hello-world]
+98c944e98de8: Preparing 
+denied: requested access to the resource is denied
+sharad@DND-INAUBUNTUSHA:~$ sudo docker push $DOCKER_ID_USER/hello-world
+Error parsing reference: "/hello-world" is not a valid repository/tag: invalid reference format
+sharad@DND-INAUBUNTUSHA:~$ sudo docker tag  48b5124b2768 192.168.178.120/test1/int200/hello-world
+sharad@DND-INAUBUNTUSHA:~$ sudo docker login 192.168.178.120
+Username (int200): 
+Password: 
+Login Succeeded
+sharad@DND-INAUBUNTUSHA:~$ sudo docker push 192.168.178.120/test1/int200/hello-world
+The push refers to a repository [192.168.178.120/test1/int200/hello-world]
+98c944e98de8: Pushed 
+latest: digest: sha256:2075ac87b043415d35bb6351b4a59df19b8ad154e578f7048335feeb02d0f759 size: 524
+
+
+
+sharad@DND-INAUBUNTUSHA:~$ sudo docker images 
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+jenkins                  latest              681ef98a247f        7 days ago          704 MB
+chef/chef                latest              22e4583aa891        5 weeks ago         104 MB
+hello-world              latest              48b5124b2768        4 months ago        1.84 kB
+jmreeve007/hello-world   latest              48b5124b2768        4 months ago        1.84 kB
+sharad@DND-INAUBUNTUSHA:~$ sudo docker pull 192.168.178.120/test1/int200/hello-world
+Using default tag: latest
+latest: Pulling from test1/int200/hello-world
+Digest: sha256:2075ac87b043415d35bb6351b4a59df19b8ad154e578f7048335feeb02d0f759
+Status: Downloaded newer image for 192.168.178.120/test1/int200/hello-world:latest
+sharad@DND-INAUBUNTUSHA:~$ sudo docker image
+image   images  
+sharad@DND-INAUBUNTUSHA:~$ sudo docker images
+REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
+jenkins                                    latest              681ef98a247f        7 days ago          704 MB
+chef/chef                                  latest              22e4583aa891        5 weeks ago         104 MB
+192.168.178.120/test1/int200/hello-world   latest              48b5124b2768        4 months ago        1.84 kB
+hello-world                                latest              48b5124b2768        4 months ago        1.84 kB
+jmreeve007/hello-world                     latest              48b5124b2768        4 months ago        1.84 kB
+sharad@DND-INAUBUNTUSHA:~$ sudo docker run 192.168.178.120/test1/int200/hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://cloud.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+
+sharad@DND-INAUBUNTUSHA:~$ 
+
+
